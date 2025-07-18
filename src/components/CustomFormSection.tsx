@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Send, Shield, Clock, Users } from "lucide-react";
 
+
 const LeadForm = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
@@ -72,12 +73,13 @@ const LeadForm = () => {
   };
 
   return (
-    <section id="formulario" className="py-20 bg-gradient-card">
+    <section id="formulario" className="py-20 bg-gradient-card"
+      data-tutorial-target="custom-form-section">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-              <span className="bg-gradient-primary bg-clip-text text-transparent">
+              <span className="bg-gradient-primary bg-clip-text text-White">
                 Solicite sua Proposta
               </span>
             </h2>

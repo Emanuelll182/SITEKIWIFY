@@ -86,7 +86,7 @@ const FloatingChat = () => {
 
     try {
       const response = await fetch(
-        "https://webhook.kecs.com.br/webhook/6ad2ff25-1f8b-40ff-b76d-41160817cc1c",
+        "https://webhook.kecs.com.br/webhook/chat-bot",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -152,7 +152,7 @@ const FloatingChat = () => {
                     className="w-full text-left p-2 rounded-lg bg-background hover:bg-muted transition-colors text-sm"
                     onClick={() => setShowForm(true)}
                   >
-                    💬 Enviar mensagem
+                    💬 Falar com o suporte
                   </button>
 
                   <button
@@ -168,7 +168,7 @@ const FloatingChat = () => {
 
                   <button
                     className="w-full text-left p-2 rounded-lg bg-background hover:bg-muted transition-colors text-sm"
-                    onClick={() => window.open("https://wa.me/5511999999999", "_blank")}
+                    onClick={() => window.open("https://wa.me/554797681119", "_blank")}
                   >
                     📱 Falar direto no WhatsApp
                   </button>
@@ -189,6 +189,13 @@ const FloatingChat = () => {
                     name="email"
                     type="email"
                     placeholder="Seu e-mail"
+                    required
+                    className="bg-background/50"
+                  />
+                  <Input
+                    name="número de whatsapp"
+                    type="tel"
+                    placeholder="Seu número de WhatsApp"
                     required
                     className="bg-background/50"
                   />
@@ -231,7 +238,8 @@ const FloatingChat = () => {
         </Card>
       )}
 
-      <button onClick={toggleChat} className="floating-chat group" aria-label="Abrir chat de suporte">
+      <button id="toggleChat" onClick={toggleChat} className="floating-chat group" aria-label="Abrir chat de suporte"
+      data-tutorial-target="floating-chat">
         <MessageCircle className="w-6 h-6 group-hover:scale-110 transition-transform" />
         <div className="absolute -top-1 -right-1 w-3 h-3 bg-cta rounded-full border-2 border-background animate-pulse"></div>
       </button>

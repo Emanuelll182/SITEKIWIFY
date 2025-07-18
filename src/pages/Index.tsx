@@ -6,6 +6,8 @@ import CustomFormSection from "@/components/CustomFormSection";
 import GuaranteeSection from "@/components/GuaranteeSection";
 import Footer from "@/components/Footer";
 import FloatingChat from "@/components/FloatingChat";
+import FloatingLoginButton from "@/components/FloatingLoginButton";
+
 
 const Index = () => {
   return (
@@ -18,6 +20,7 @@ const Index = () => {
       <GuaranteeSection />
       <Footer />
       <FloatingChat />
+      <FloatingLoginButton />
     </div>
   );
 };

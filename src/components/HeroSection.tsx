@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Zap } from "lucide-react";
 import heroImage from "@/assets/hero-workflow.jpg";
 
+
 const HeroSection = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -34,7 +35,7 @@ const HeroSection = () => {
                 className="group"
               >
                 <Zap className="w-5 h-5" />
-                Ver Templates
+                Ver Pacotes
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
               

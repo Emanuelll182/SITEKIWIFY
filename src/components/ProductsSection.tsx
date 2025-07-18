@@ -10,62 +10,30 @@ const ProductsSection = () => {
 
   const filters = [
     { id: "todos", label: "Todos", icon: Filter },
-    { id: "marketing", label: "Marketing", icon: TrendingUp },
-    { id: "vendas", label: "Vendas", icon: Mail },
-    { id: "ecommerce", label: "E-commerce", icon: ShoppingCart },
-    { id: "produtividade", label: "Produtividade", icon: Zap }
+   
   ];
 
   const products = [
     {
       id: 1,
-      name: "Automação de E-mail Marketing",
-      category: "marketing",
-      price: "97,00",
-      tools: ["Gmail", "Google Sheets", "Mailchimp"],
-      description: "Segmente e envie campanhas automaticamente",
+      name: "PACK 1000 TEMPLATES DE AUTOMAÇÃO",
+      category: "Todos",
+      price: "29,99",
+      tools: ["Adequado Para Múltiplas Ferramentas"],
+      description: "COMECE A DOMINAR O N8N COM NOSSO PACK DE 1000 TEMPLATES",
       featured: true
     },
     {
       id: 2,
-      name: "Pipeline de Vendas Automatizado",
-      category: "vendas",
-      price: "147,00",
-      tools: ["HubSpot", "Slack", "Google Calendar"],
-      description: "Gerencie leads desde a captação até o fechamento"
+      name: "PACK DE 2000 TEMPLATES DE AUTOMAÇÃO",
+      category: "Todos",
+      price: "49,99",
+      tools: ["BOTS DE VENDA", "AGENDAMENTO", "PROSPECÇÃO DE CLIENTE", "E MUITO MAIS"],
+      description: "DOMINE O N8N COM NOSSO PACK DE 2000 TEMPLATES",
+      featured: true
     },
-    {
-      id: 3,
-      name: "Sincronização de Estoque",
-      category: "ecommerce",
-      price: "127,00",
-      tools: ["Shopify", "WooCommerce", "Google Sheets"],
-      description: "Mantenha estoque sincronizado entre plataformas"
-    },
-    {
-      id: 4,
-      name: "Relatórios Automáticos",
-      category: "produtividade",
-      price: "87,00",
-      tools: ["Google Analytics", "Data Studio", "Slack"],
-      description: "Receba relatórios detalhados automaticamente"
-    },
-    {
-      id: 5,
-      name: "Chatbot para Atendimento",
-      category: "vendas",
-      price: "167,00",
-      tools: ["WhatsApp", "Telegram", "Notion"],
-      description: "Atenda clientes 24/7 com respostas inteligentes"
-    },
-    {
-      id: 6,
-      name: "Social Media Automation",
-      category: "marketing",
-      price: "117,00",
-      tools: ["Instagram", "Twitter", "Buffer"],
-      description: "Publique conteúdo automaticamente nas redes"
-    }
+    
+    
   ];
 
   const filteredProducts = activeFilter === "todos" 
@@ -73,43 +41,55 @@ const ProductsSection = () => {
     : products.filter(product => product.category === activeFilter);
 
   const handlePurchaseClick = async (product: any) => {
-    try {
-      // Enviar dados para o webhook n8n antes de redirecionar
-      const formData = new FormData();
-      formData.append('nome', 'Cliente Interessado'); // Dados padrão
-      formData.append('email', 'leads@nextflow.com.br'); // E-mail interno para tracking
-      formData.append('descricao', `Cliente interessado no produto: ${product.name} - Valor: R$ ${product.price}`);
-      formData.append('produto_id', product.id.toString());
-      formData.append('produto_nome', product.name);
-      formData.append('produto_preco', product.price);
-      formData.append('tipo_contato', 'interesse_compra');
-      
-      // Enviar para o webhook (sem esperar resposta para não atrasar o redirecionamento)
-      fetch('https://webhook.kecs.com.br/webhook/coleta-formularios', {
-        method: 'POST',
-        body: formData,
-      }).catch(error => console.log('Webhook error:', error));
-      
-      // Mostrar toast de confirmação
-      toast({
-        title: "Redirecionando para pagamento...",
-        description: "Você será direcionado para a página de compra. Nossa equipe entrará em contato via WhatsApp!",
-      });
-      
-      // Redirecionar para a Kiwify (você pode substituir por links reais depois)
-      setTimeout(() => {
-        window.open(`https://kiwify.app/checkout/exemplo-produto-${product.id}`, '_blank');
-      }, 1000);
-      
-    } catch (error) {
-      console.error('Erro ao processar compra:', error);
-      toast({
-        title: "Erro",
-        description: "Houve um problema. Tente novamente ou entre em contato pelo chat.",
-        variant: "destructive"
-      });
-    }
-  };
+  const isLoggedIn = localStorage.getItem("userToken"); // ou use contexto se tiver
+
+  if (!isLoggedIn) {
+    toast({
+      title: "Faça login para continuar",
+      description: "Você precisa estar logado para realizar a compra.",
+      variant: "destructive",
+    });
+    return;
+  }
+
+  try {
+    // Enviar dados para o webhook n8n
+    const formData = new FormData();
+    formData.append('nome', 'Cliente Interessado');
+    formData.append('email', 'leads@nextflow.com.br');
+    formData.append('descricao', `Cliente interessado no produto: ${product.name} - Valor: R$ ${product.price}`);
+    formData.append('produto_id', product.id.toString());
+    formData.append('produto_nome', product.name);
+    formData.append('produto_preco', product.price);
+    formData.append('tipo_contato', 'interesse_compra');
+
+    fetch('https://webhook.kecs.com.br/webhook/coleta-formularios', {
+      method: 'POST',
+      body: formData,
+    }).catch(error => console.log('Webhook error:', error));
+
+    toast({
+      title: "Redirecionando para pagamento...",
+      description: "Você será direcionado para a página de compra. Nossa equipe entrará em contato via WhatsApp!",
+    });
+
+    setTimeout(() => {
+      if (product.id === 1) {
+        window.open(`https://pay.kiwify.com.br/B4ESihl`, '_blank');
+      } else if (product.id === 2) {
+        window.open(`https://pay.kiwify.com.br/mt8SsJb`, '_blank');
+      }
+    }, 1000);
+  } catch (error) {
+    console.error('Erro ao processar compra:', error);
+    toast({
+      title: "Erro",
+      description: "Houve um problema. Tente novamente ou entre em contato pelo chat.",
+      variant: "destructive"
+    });
+  }
+};
+
 
   return (
     <section id="produtos" className="py-20 bg-background">
