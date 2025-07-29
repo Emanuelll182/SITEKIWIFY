@@ -9,9 +9,9 @@ import { v4 as uuidv4 } from "uuid"; // instale com: npm i uuid
 import { toast } from "@/components/ui/use-toast"; // ajuste o caminho conforme sua estrutura
 
 // 🔐 Configure seu token e IDs aqui
-const BASEROW_API_TOKEN = "vOUUW7s6A6GIHYkENxKK12dpr3STlZnj";
-const TABLE_ID = "703";
-const API_URL = `https://baserow.kecs.com.br/api/database/rows/table/${TABLE_ID}/?user_field_names=true`;
+const BASEROW_API_TOKEN = "iuClGZn0J6mpfP06T7RoaD1awCoPCPC3";
+const TABLE_ID = "624104";
+const API_URL = `https://api.baserow.io/api/database/rows/table/${TABLE_ID}/?user_field_names=true`;
 
 interface LoginModalProps {
   isOpen: boolean;
