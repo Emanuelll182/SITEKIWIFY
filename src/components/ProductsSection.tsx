@@ -18,8 +18,9 @@ const ProductsSection = () => {
       id: 1,
       name: "PACK 1000 TEMPLATES DE AUTOMAÇÃO",
       category: "Todos",
-      price: "29,99",
-      tools: ["Adequado Para Múltiplas Ferramentas"],
+      price: "19,99",
+      old_price: " 39,90",
+      tools: ["ASSISTENTE DE ATENDIMENTO", "EMAIL MARKETING", "TRANSCRIÇÃO DE ÁUDIO", "E MUITO MAIS"],
       description: "COMECE A DOMINAR O N8N COM NOSSO PACK DE 1000 TEMPLATES",
       featured: true
     },
@@ -27,7 +28,8 @@ const ProductsSection = () => {
       id: 2,
       name: "PACK DE 2000 TEMPLATES DE AUTOMAÇÃO",
       category: "Todos",
-      price: "49,99",
+      price: "34,99",
+      old_price: "59,90",
       tools: ["BOTS DE VENDA", "AGENDAMENTO", "PROSPECÇÃO DE CLIENTE", "E MUITO MAIS"],
       description: "DOMINE O N8N COM NOSSO PACK DE 2000 TEMPLATES",
       featured: true
@@ -137,6 +139,7 @@ const ProductsSection = () => {
                     )}
                   </div>
                   <div className="text-right">
+                    <p className="text-sm font-medium text-muted-foreground line-through">R$ {product.old_price}</p>
                     <p className="text-2xl font-bold text-cta">R$ {product.price}</p>
                   </div>
                 </div>
