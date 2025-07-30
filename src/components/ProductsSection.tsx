@@ -16,7 +16,7 @@ const ProductsSection = () => {
   const products = [
     {
       id: 1,
-      name: "PACK 1000 TEMPLATES DE AUTOMAÇÃO",
+      name: "PACK 1000 TEMPLATES DE AUTOMAÇÃO + BÔNUS",
       category: "Todos",
       price: "19,99",
       old_price: " 39,90",
@@ -26,7 +26,7 @@ const ProductsSection = () => {
     },
     {
       id: 2,
-      name: "PACK DE 2000 TEMPLATES DE AUTOMAÇÃO",
+      name: "PACK DE 2000 TEMPLATES DE AUTOMAÇÃO + SUPER BÔNUS",
       category: "Todos",
       price: "34,99",
       old_price: "59,90",
