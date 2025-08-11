@@ -28,7 +28,7 @@ const ProductsSection = () => {
       id: 2,
       name: "PACK DE 2000 TEMPLATES DE AUTOMAÇÃO + SUPER BÔNUS",
       category: "Todos",
-      price: "34,99",
+      price: "29,99",
       old_price: "59,90",
       tools: ["BOTS DE VENDA", "AGENDAMENTO", "PROSPECÇÃO DE CLIENTE", "E MUITO MAIS"],
       description: "DOMINE O N8N COM NOSSO PACK DE 2000 TEMPLATES",
