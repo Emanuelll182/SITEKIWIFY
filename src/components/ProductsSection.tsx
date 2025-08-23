@@ -17,7 +17,7 @@ const ProductsSection = () => {
       id: 1,
       name: "PACK 1000 TEMPLATES DE AUTOMAÇÃO + BÔNUS",
       category: "Todos",
-      price: "19,99",
+      price: "19,90",
       old_price: "39,90",
       tools: [
         "ASSISTENTE DE ATENDIMENTO",
@@ -32,7 +32,7 @@ const ProductsSection = () => {
       id: 2,
       name: "PACK DE 2000 TEMPLATES DE AUTOMAÇÃO + SUPER BÔNUS",
       category: "Todos",
-      price: "29,99",
+      price: "29,90",
       old_price: "49,90",
       tools: [
         "BOTS DE VENDA",
